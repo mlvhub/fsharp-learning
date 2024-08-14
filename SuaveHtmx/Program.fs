@@ -19,7 +19,8 @@ let listBooks (connectionString: string) : Task<list<Book>> =
         { Id = read.uuid "id"
           Name = read.text "name" })
 
-type Model = { Title: string; Books: list<Book> }
+type BooksPage = { Title: string; Books: list<Book> }
+type HomePage = { Title: string }
 
 let bookListHandler (connectionString: string) =
     fun ctx ->
@@ -33,6 +34,10 @@ let bookListHandler (connectionString: string) =
 let app =
     let connectionString = System.Environment.GetEnvironmentVariable "DATABASE_URL"
 
-    choose [ GET >=> choose [ path "/books" >=> bookListHandler connectionString ] ]
+    choose
+        [ GET
+          >=> choose
+                  [ path "/books" >=> bookListHandler connectionString
+                    path "/" >=> page "index.liquid" { Title = "Home" } ] ]
 
 startWebServer defaultConfig app
