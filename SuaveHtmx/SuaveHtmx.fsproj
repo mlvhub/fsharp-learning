@@ -1,19 +1,29 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
+    <PublishAot>true</PublishAot>
+    <StaticallyLinked>true</StaticallyLinked>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
-
   <ItemGroup>
+    <Compile Include="chapters/Chapter.fs" />
+    <Compile Include="books/Book.fs" />
+    <Compile Include="styles/Styles.fs" />
+    <Compile Include="hyperscript/Attrs.fs" />
+    <Compile Include="htmx/Attrs.fs" />
+    <Compile Include="templates/Svg.fs" />
+    <Compile Include="templates/Layout.fs" />
+    <Compile Include="templates/Accordion.fs" />
+    <Compile Include="chapters/ChapterRepository.fs" />
+    <Compile Include="books/BookRepository.fs" />
+    <Compile Include="books/BooksPage.fs" />
+    <Compile Include="books/BooksPageHandler.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="DotLiquid" Version="2.2.692" />
+    <PackageReference Include="Falco.Markup" Version="1.1.1" />
     <PackageReference Include="Npgsql.FSharp" Version="5.7.0" />
     <PackageReference Include="Suave" Version="2.6.2" />
-    <PackageReference Include="Suave.DotLiquid" Version="2.6.2" />
   </ItemGroup>
-
 </Project>
