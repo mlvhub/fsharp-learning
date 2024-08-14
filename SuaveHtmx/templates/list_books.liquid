@@ -1,0 +1,13 @@
+
+<!DOCTYPE html>
+  <head>
+    <title>Books</title>
+  </head>
+  <body>
+    <ul>
+      {% for book in model.Books %}
+        <li>{{ book.Name }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
